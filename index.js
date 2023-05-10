@@ -10,15 +10,19 @@ app.set('views', './views');
 app.use('/public', express.static('public'))
 
 app.get("/", (req, res) => {
-	res.render("start");
+	res.render("start", { title: "Velkommen til det nye internet"});
 });
 
 app.get("/platform", (req, res) => {
-	res.render("platform");
+	res.render("platform", { title: "Platforme i fediverset" });
+});
+
+app.get("/ordbog", (req, res) => {
+	res.render("ordbog", { title: "Ordbog" });
 });
 
 app.get('*', (req, res) => {
-	res.sendStatus(404);
+	res.render("404", { title: "Siden ikke fundet" });
 })
 
 app.listen(port, () => {
